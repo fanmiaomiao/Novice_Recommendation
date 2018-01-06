@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 测试 -->
+	<package name="hello" namespace="/" extends="struts-default">
+		<action name="helloAction" class="com.ssh.action.helloAction" >
+			<result name="success" type="dispatcher">/view/hello.jsp</result>
+		</action>
+	</package>
+
+	<!-- 登陆 -->
+	<package name="struts2" namespace="/" extends="struts-default">
+		<action name="loginAction" class="loginServer">
+			<result name="input" >/view/login.jsp</result>
+			<result name="success" >/view/result.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 注册 regForm -->
+	<!-- <package name="reg" namespace="/" extends="struts-default">
+		<action name="regAction" class="reg">
+			<result name="input" >/view/reg.jsp</result>
+			<result name="success" >/view/regsuccess.jsp</result>
+		</action>
+	</package>
+	 -->
+	 <!-- 注册 -->
+	<package name="reg2" namespace="/" extends="struts-default">
+		<action name="regAction"  class="com.ssh.action.RegAction" >
+			<result name="input" >/view/reg.jsp</result>
+			<result name="success" >/view/regsuccess.jsp</result>
+		</action>
+	</package>
+</struts>
