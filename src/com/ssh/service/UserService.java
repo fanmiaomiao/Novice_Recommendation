@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ssh.entity.User;
 
+
 @Transactional
 public interface UserService {
 	
