@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	hello～
+	hello～ ssh
+	test~
 </body>
 </html>
