@@ -24,22 +24,14 @@
        <!-- 开启注解  -->
        <tx:annotation-driven transaction-manager="txManager" /> 
        
-       <!-- 登陆 -->
-        <!-- Service配置 -->  
-        <bean id="loginService" class="com.ssh.service.impl.LoginServiceImpl"></bean> 
-        	<!-- Action配置 -->
-			<bean id="loginServer" class="com.ssh.action.LoginAction">
-				<property name="loginService" ref="loginService"></property>
-			</bean>
-			
 			     
+		
+	   <!-- 注册 -->
        <!-- Dao配置 -->
 		<bean id="userDao" class="com.ssh.dao.impl.UserDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
-		
-		<!-- 注册 -->
-		<!-- Service配置 -->
+			<!-- Service配置 -->
 		<bean id="userService" class="com.ssh.service.impl.UserServiceImpl">
 			<property name="userDao" ref="userDao"></property>
 		</bean>
@@ -49,6 +41,24 @@
 		</bean>
 		
 		
+		
+		<!-- 登陆 -->	
+		<!-- dao注入sessionFactory -->
+		<!-- 注入持久化操作所需的SessionFactory -->	
+		<bean id="logind" class="com.ssh.dao.impl.LoginDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+        <!-- Service注入dao，id为 下面 的ref class为service实现类 -->  
+        <bean id="loginService" class="com.ssh.service.impl.LoginServiceImpl">
+        		<property name="logindao" ref="logind"></property>
+        </bean> 
+        	<!-- Action配置 -->
+        	<!-- Action注入sevice id=“” 注入class=“action路径” name=“loginservice"与LoginAction中声明的要保持一致
+        	ref随便取  -->
+		<bean id="loginServer" class="com.ssh.action.LoginAction">
+			<property name="loginService" ref="loginService"></property>
+		</bean>
 			
+		
 				
     </beans> 

@@ -34,14 +34,14 @@ public class RegAction extends ActionSupport implements ModelDriven<User>{
 	@Override
 	public User getModel() {
 		// TODO Auto-generated method stub
-		System.out.println(user);
+		//System.out.println(user);
 		return user;
 		
 	}	
 	
 	public String execute(){	
 		userService.add(user);
-		System.out.println("2++"+user);
+		//System.out.println("2++"+user);
 		return "success";
 	}
 	

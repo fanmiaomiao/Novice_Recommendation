@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="loginAction">
-  <label>姓名：
+<form id="form1" name="login" method="post" action="loginAction">
+  <label>用户名：
   <input type="text" name="userName" />
   </label>
   <p>

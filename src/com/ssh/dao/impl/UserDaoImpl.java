@@ -10,6 +10,8 @@ import java.sql.SQLException;
 
 
 
+
+
 import java.util.List;
 
 
@@ -54,7 +56,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
 //				return query.list();
 //			}
 			public Object doInHibernate(Session session) throws HibernateException {
-				Query query=session.createQuery("from manager");
+				Query query=session.createQuery("from User");
 				return query.list();
 			}
 
