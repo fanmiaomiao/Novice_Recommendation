@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="com.ssh.entity.Chart" table="t_chart">
+		<id name="chartId" column="chartId">
+			<generator class="native"></generator>
+		</id>
+		<property name="chartType"></property>
+		<property name="chartDate"></property>
+		<property name="chartLocate"></property>
+		
+		<many-to-one name="merchant" class="com.ssh.entity.Merchant" unique="true" column="merchantId">
+      	</many-to-one>
+	</class>
+</hibernate-mapping>
+
+
+
+
+
