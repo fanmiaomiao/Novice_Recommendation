@@ -11,21 +11,19 @@
  http://www.springframework.org/schema/tx
  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<!-- 引入hibernate配置文件 -->
-	<import resource="hibernate.cfg.xml" />
-
-	<!-- 事务管理器 -->
-	<bean id="txManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<!-- action配置 -->
+	<bean id="merchantAction" class="com.ssh.action.MerchantAction" scope="prototype">
+		<property name="merchantService" ref="merchantService"></property>
+	</bean>
+	 
+	<!-- Service配置 -->
+	<bean id="merchantService" class="com.ssh.service.MerchantService">
+		<property name="merchantDao" ref="merchantDaoImpl"></property>
+	</bean>
+	
+	<!-- Dao配置 -->
+	<bean id="merchantDaoImpl" class="com.ssh.dao.impl.MerchantDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
-	<!-- 开启注解 -->
-	<tx:annotation-driven transaction-manager="txManager" />
-
-	<!-- 引入用户模块配置文件 -->
-	<import resource="classpath:user.xml"/>
-	<import resource="classpath:manager.xml"/>
-	<import resource="classpath:merchant.xml"/>
-
-</beans> 
+	
+ </beans>
