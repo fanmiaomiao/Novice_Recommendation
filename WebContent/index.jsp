@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	hello～ ssh
-	test~
+	<jsp:forward page="view/login.jsp"></jsp:forward>
 </body>
 </html>

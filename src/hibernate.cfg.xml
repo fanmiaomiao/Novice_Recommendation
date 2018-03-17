@@ -47,7 +47,6 @@
         
             <!-- 指定hibernate映射文件 -->
             <list>
-                <value>com/ssh/entity/User.hbm.xml</value>
                 <value>com/ssh/entity/AP.hbm.xml</value>
                 <value>com/ssh/entity/chart.hbm.xml</value>
                 <value>com/ssh/entity/coupons.hbm.xml</value>

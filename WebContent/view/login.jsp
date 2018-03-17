@@ -4,17 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>管理员登录</title>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="loginAction">
-  <label>姓名：
-  <input type="text" name="userName" />
+<form id="form1" name="form1" method="post" action="${pageContext.request.contextPath }/manager_login.action">
+  <label>管理员姓名：
+  <input type="text" name="managerName" />
   </label>
   <p>
-    <label>
-    密码：
-    <input type="text" name="password" />
+    <label>管理员密码：
+    <input type="text" name="managerPwd" />
     </label>
   </p>
   <p>
