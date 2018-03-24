@@ -6,14 +6,40 @@
 
 	<package name="manager" namespace="/" extends="struts-default">
 		<action name="manager_*" class="managerAction" method="{1}">
-			<result name="loginSuccess">index.jsp</result>
-			<result name="login">/view/Login/login.jsp</result>
+			<result name="loginSuccess">index.htm</result>
+			<result name="login">login.jsp</result>
 		</action>
 	</package>
 	
-	<package name="merchant" namespace="/" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default">
 		<action name="merchant_*" class="merchantAction" method="{1}">
-			<result name="add">/view/success.jsp</result>
+			<!-- to add page -->
+			<result name="toAddPage">/view/merchant/add.jsp</result>
+			<result name="add">/jsp/success.jsp</result>
+			<result name="list">/view/merchant/list.jsp</result>
+			<result name="toEditPage">/view/merchant/edit.jsp</result>
+			<result name="edit">/jsp/success.jsp</result>
+			<result name="delete">/jsp/success.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 一个很难看到的错误，包不能重名！！！ -->
+	<!-- <package name="default2" namespace="/" extends="struts-default">
+		<action name="ap_*" class="apAction" method="{1}">
+			to add page
+			<result name="search">/success.jsp</result>
+		</action>
+	</package> -->
+	
+	<!-- AP相关信息 -->
+	<package name="ap" extends="json-default" namespace="/">
+		<action name="ap_*" class="apAction" method="{1}">
+			<result name="search" type="json">
+				<param name="root">oneAP</param>
+			</result>
+			<result name="searchAll" type="json">
+				<param name="root">allAP</param>
+			</result>
 		</action>
 	</package>
 </struts>

@@ -1,6 +1,10 @@
 package com.ssh.action;
 
 
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.ssh.entity.Merchant;
@@ -8,7 +12,6 @@ import com.ssh.service.MerchantService;
 
 public class MerchantAction extends ActionSupport implements ModelDriven<Merchant>{
 	
-	//模型驱动获取前台数据
 	private Merchant merchant = new Merchant();
 	@Override
 	public Merchant getModel() {
@@ -21,11 +24,42 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		this.merchantService = merchantService;
 	}
 	
-	//添加商户
+	public String toAddPage()
+	{
+		return "toAddPage";
+	}
+	
+	//1.娣诲姞鍟嗘埛
 	public String add()
 	{
 		merchantService.add(merchant);
 		return "add";
+	}
+	//2.鏌ョ湅鍟嗘埛鍒楄〃
+	public String list()
+	{
+		List<Merchant> list = merchantService.findAll();
+		ServletActionContext.getRequest().setAttribute("list", list);
+		return "list";
+	}
+	public String toEditPage()
+	{
+		Merchant m = merchantService.findOne(merchant.getMerchantId());
+		//put m into context object
+		ServletActionContext.getRequest().setAttribute("merchant", m);
+		return "toEditPage";
+	}
+	//3.缂栬緫鍟嗘埛淇℃伅
+	public String edit()
+	{
+		merchantService.edit(merchant);
+		return "edit";
+	}
+	//4.鍒犻櫎鍟嗘埛淇℃伅
+	public String delete()
+	{
+		merchantService.delete(merchant);
+		return "delete";
 	}
 	
 }
