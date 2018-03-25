@@ -5,7 +5,7 @@ $(document).ready(function() {
         url: "/Novice_Recommendation/ap_searchAll.action",
         type: "GET",
         dataType: "json",
-        beforeSend: function() {
+      /*  beforeSend: function() {
             //添加 loding 样式
             $("#loading").css("height", $(document).height());
             $("#loading").css("width", $(document).width());
@@ -15,24 +15,46 @@ $(document).ready(function() {
             $("#loadingimg").css("display", "block");
             $("#loading").show();
         },
+        */
         success: function(data) {
         	console.log(data);
-            $("#loading").hide(); //加载成功关闭loding
-            data = data.apName;
+           // $("#loading").hide(); //加载成功关闭loding
+            //data = data.apName;
+            /*
             for (var i = 0; i < data.length; i++) {
                 data[i]["操作"] = "<button  onclick='DeleteAp(event)'><img alt='delete'" +
                     " src='../../image/delete.png'></button><button onclick='EdictAp(event)'><img alt='edict'" +
                     "  src='../../image/edict.png'></button>";
                 data[i]["详情"] = "<a href='#'>>></a>";
             }
+            */
+           var data = JSON.parse(data);
+//            console.log(info);
+//            $("#apId").val(info.apId);
+//            $("#apName").val(info.apName);
+//            $("#apMac").val(info.apMac);
+//            $("#apState").val(info.apState);
+//            $("#connNum").val(info.connNum);
+//
+//            $("#add_ap_save_button").hide();
+//            $(".add-ap>.head > span").text("所查找的AP信息");
+//            showMask();
+//            $(".add-ap").show();
+
             var cs = new table({
                 "tableId": "cs_table", //必须
-                "headers": ["编号", "名称", "apMac", "状态信息", "连接数"], //必须
+                "headers": ["apId", "apMac", "apName", "apState", "connNum"], //必须
                 "data": data, //必须
                 "displayNum": 10, //必须   默认 10
                 "groupDataNum": 9 //可选    默认 10
             });
 
+        },
+        error: function() {
+            setTimeout(function() {
+                $(".alert-error").css("display", "none");
+            }, 3000);
+            $(".alert-error").css("display", "block");
         }
     })
 
@@ -57,13 +79,12 @@ function SearchAP() {
 //                var info = data.ap[0];
                 var info = JSON.parse(data);
                 $("#apId").val(info.apId);
-                
                 $("#apName").val(info.apName);
                 $("#apMac").val(info.apMac);
                 $("#apState").val(info.apState);
                 $("#connNum").val(info.connNum);
                 
-                //$("#ap_position").val(info.ap_position);
+          
                 $("#add_ap_save_button").hide();
                 $(".add-ap>.head > span").text("所查找的AP信息");
                 showMask();
@@ -156,27 +177,27 @@ function CancelDeleteAp() {
 }
 
 function SaveAddAP() {
-    var ap_id = $("#ap_id").val()==undefined?"":$("#ap_id").val();
-    var ap_mac = $("#ap_mac").val().trim(" ");
-    var ap_lng = $("#ap_lng").val();
-    var ap_lat = $("#ap_lat").val();
-    var poi_name = $("#poi_name").val();
-    var ap_position = $("#ap_position").val();
+    var apId = $("#apId").val()==undefined?"":$("#ap_id").val();
+    var apName = $("#apName").val().trim(" ");
+    var apMac = $("#apMac").val();
+    var apState = $("#apState").val();
+    var connNum = $("#connNum").val();
+   // var ap_position = $("#ap_position").val();
     if (ap_mac == "" || ap_lng == "" || ap_lat == "" || poi_name == ""|| ap_position == "") {
         $(".add-ap_alert").css("display", "block");
         return;
     }
     var send_data = {
-        "ap_id":ap_id,
-        "ap_mac": ap_mac,
-        "ap_poi": poi_name,
-        "ap_position": ap_position,
-        "ap_lng": ap_lng,
-        "ap_lat": ap_lat
+        "apId":apId,
+        "apName": apName,
+        "apMac": apMac,
+        "apState": apState,
+        "connNum": connNum,
+        //"ap_lat": ap_lat
     };
-    console.log(typeof send_data.ap_position);
+    console.log(typeof send_data);
     $.ajax({
-        url: "/api/ap-manager/save/",
+        url: "",
         data: send_data,
         type: "POST",
         dataType: "json",
@@ -211,6 +232,10 @@ function CancelAddAp(divName) {
     $("#ap_position").val("");
 
 }
+
+
+
+
 
 /**
  * 抽象化表格

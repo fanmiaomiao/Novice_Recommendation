@@ -23,6 +23,15 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 		this.managerService = managerService;
 	}
 	
+	//和前端交互的值
+	private String result;
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public String getResult() {
+		return result;
+	}
+	
 	public String login()
 	{
 		Manager loginManager = managerService.login(manager);
@@ -30,12 +39,13 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 		{
 			HttpServletRequest request = ServletActionContext.getRequest();
 			request.getSession().setAttribute("manager", loginManager);
-			return "loginSuccess";
+			result = "success";			
 		}
 		else
 		{
-			return "login";
+			result = "fail";
 		}
+		return "login";
 	}
 	
 }

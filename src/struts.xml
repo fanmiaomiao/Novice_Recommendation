@@ -4,10 +4,11 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-	<package name="manager" namespace="/" extends="struts-default">
+	<package name="manager" extends="json-default" namespace="/">
 		<action name="manager_*" class="managerAction" method="{1}">
-			<result name="loginSuccess">index.htm</result>
-			<result name="login">login.jsp</result>
+			<result name="login" type="json">
+				<param name="root">result</param>
+			</result>
 		</action>
 	</package>
 	

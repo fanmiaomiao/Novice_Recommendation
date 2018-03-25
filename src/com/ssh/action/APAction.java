@@ -1,13 +1,13 @@
 package com.ssh.action;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.ssh.entity.AP;
 import com.ssh.service.APService;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class APAction implements ModelDriven<AP>{
@@ -34,8 +34,7 @@ public class APAction implements ModelDriven<AP>{
 		this.oneAP = oneAP;
 	}
 	
-	private String allAP;
-	
+	private String allAP;	
 	public String getAllAP() {
 		return allAP;
 	}
@@ -60,12 +59,15 @@ public class APAction implements ModelDriven<AP>{
 	//查找所有的AP
 	public String searchAll()
 	{
+		List<String> jsons = new ArrayList<>();
 		List<AP> lists = apService.searchAll();
-		allAP = "";
+		String str = "";
 		for(AP tmp:lists)
 		{
-			allAP += JSONObject.fromObject(tmp).toString();
+			jsons.add(JSONObject.fromObject(tmp).toString());
 		}
+		allAP = JSONArray.fromObject(jsons).toString();
+//		allAP = allAP.substring(0, -1);
 		System.out.println(allAP);
 		return "searchAll";
 	}
