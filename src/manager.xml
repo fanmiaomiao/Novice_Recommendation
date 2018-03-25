@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop.xsd
+ http://www.springframework.org/schema/tx
+ http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- action配置 -->
+	<bean id="managerAction" class="com.ssh.action.ManagerAction" scope="prototype">
+		<property name="managerService" ref="managerService"></property>
+	</bean>
+	 
+	<!-- Service配置 -->
+	<bean id="managerService" class="com.ssh.service.ManagerService">
+		<property name="managerDao" ref="managerDaoImpl"></property>
+	</bean>
+	
+	<!-- Dao配置 -->
+	<bean id="managerDaoImpl" class="com.ssh.dao.impl.ManagerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+ </beans>

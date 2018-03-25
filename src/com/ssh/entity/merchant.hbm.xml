@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="com.ssh.entity.Merchant" table="t_merchant">
+		<id name="merchantId" column="merchantId">
+			<generator class="native"></generator>
+		</id>
+		<property name="merchantName"></property>
+		<property name="merchantAccount"></property>
+		<property name="merchantPwd"></property>
+		<property name="merchantPhone"></property>
+		<property name="merchantEmail"></property>
+		<!-- 一对一映射，不持有外键一方不用配置one-to-one -->
+		
+		<!--一对一映射，有外键方，unique="true" 给外键字段 添加唯一约束 -->  
+      	<many-to-one name="ap" class="com.ssh.entity.AP" unique="true" column="APId">
+      	</many-to-one> 
+      	<!-- 与标签多对多,表示多条联系 -->
+      	<set name="setMerTag">
+      		<key column="mtid"></key>
+      		<one-to-many class="com.ssh.entity.Mer_tag"/>
+      	</set>
+	</class>
+</hibernate-mapping>
+
+
+
+
+

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="../../favicon.ico" />
+        <link href="../../lib/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../../lib/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="login.css" rel="stylesheet" />
+        <script src="../../lib/js/jquery.min.js"></script>
+        <script src="../../lib/js/bootstrap/bootstrap.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="js/bootstrap/html5shiv.min.js"></script>
+        <script src="js/bootstrap/respond.min.js"></script>
+        <![endif]-->
+        <!--页面加载进度条-->
+        <script src="../../lib/js/pace/pace.min.js"></script>
+        <script src="../../lib/js/jquery.scrolltopcontrol/scrolltopcontrol.js" type="text/javascript"></script>
+        <script src="../../lib/js/jquery.extend.js" type="text/javascript"></script>
+        <script src="../../js/default.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="logo">
+                <span style="color: skyblue;font-size: 30px;">智慧城市</span>
+                <img src="../../image/logo-front.png">
+            </div>
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Login to your account</h2>
+                <label for="inputEmail" class="sr-only">User Id </label>
+                <input id="inputuserid" class="form-control" placeholder="User Id" required autofocus>
+                <div class="blank"></div>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div class="checkbox">
+                    <label style="font-size:16px;">
+                        <input type="checkbox" value="remember-me" name="remember me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="button" id="submit">Sign in</button>
+            </form>
+            </div> <!-- /container -->
+            <script>
+            $("#submit").on("click",function(){
+            	var inputuserid = $('#inputuserid').val();
+            	var inputPassword = $('#inputPassword').val();
+            	/* console.log(inputPassword); */
+            	$.ajax({
+            		url:"/Novice_Recommendation/manager_login.action",
+            		type:"post",
+            		dataType:"json",
+            		data:{"managerName":inputuserid,"managerPwd":inputPassword},
+            		success:function(data){
+            			console.log(data);
+            			if(data=="success"){
+            				window.location.href='../connect/AP-manage.html';
+            			}
+            			else
+						{
+            				window.alert("用户名或密码错误！请重新输入！");
+						}
+            		},
+            		error:function(){
+            			window.alert("网络错误！");
+            		}
+            	})
+            })
+            </script>
+        </body>
+    </html>

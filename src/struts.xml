@@ -3,34 +3,55 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<!-- 测试 -->
-	<package name="hello" namespace="/" extends="struts-default">
-		<action name="helloAction" class="com.ssh.action.helloAction" >
-			<result name="success" type="dispatcher">/view/hello.jsp</result>
-		</action>
-	</package>
 
+<<<<<<< HEAD
 	<!-- 登陆 -->
 	<package name="struts2" extends="struts-default">
 		<action name="loginAction" class="loginServer">
 			<result name="input" >/view/login.jsp</result>
 			<result name="success" >/view/result.jsp</result>
+=======
+	<package name="manager" extends="json-default" namespace="/">
+		<action name="manager_*" class="managerAction" method="{1}">
+			<result name="login" type="json">
+				<param name="root">result</param>
+			</result>
+>>>>>>> zcy
 		</action>
 	</package>
 	
-	<!-- 注册 regForm -->
-	<!-- <package name="reg" namespace="/" extends="struts-default">
-		<action name="regAction" class="reg">
-			<result name="input" >/view/reg.jsp</result>
-			<result name="success" >/view/regsuccess.jsp</result>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="merchant_*" class="merchantAction" method="{1}">
+			<!-- to add page -->
+			<result name="toAddPage">/view/merchant/add.jsp</result>
+			<result name="add">/jsp/success.jsp</result>
+			<result name="list">/view/merchant/list.jsp</result>
+			<result name="toEditPage">/view/merchant/edit.jsp</result>
+			<result name="edit">/jsp/success.jsp</result>
+			<result name="delete">/jsp/success.jsp</result>
 		</action>
 	</package>
-	 -->
-	 <!-- 注册 -->
-	<package name="reg2" namespace="/" extends="struts-default">
-		<action name="regAction"  class="com.ssh.action.RegAction" >
-			<result name="input" >/view/reg.jsp</result>
-			<result name="success" >/view/regsuccess.jsp</result>
+	
+	<!-- 一个很难看到的错误，包不能重名！！！ -->
+	<!-- <package name="default2" namespace="/" extends="struts-default">
+		<action name="ap_*" class="apAction" method="{1}">
+			to add page
+			<result name="search">/success.jsp</result>
+		</action>
+	</package> -->
+	
+	<!-- AP相关信息 -->
+	<package name="ap" extends="json-default" namespace="/">
+		<action name="ap_*" class="apAction" method="{1}">
+			<result name="search" type="json">
+				<param name="root">oneAP</param>
+			</result>
+			<result name="searchAll" type="json">
+				<param name="root">allAP</param>
+			</result>
+			<result name="add" type="json">
+				<param name="root">allAP</param>
+			</result>
 		</action>
 	</package>
 </struts>

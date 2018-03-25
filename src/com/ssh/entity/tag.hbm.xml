@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="com.ssh.entity.Tag" table="t_tag">
+		<id name="tagId" column="tagId">
+			<generator class="native"></generator>
+		</id>
+		<property name="tagName"></property>
+		<!-- 表示多条联系 -->
+		<set name="setTagMer">
+			<key column="tmid"></key>
+			<one-to-many class="com.ssh.entity.Mer_tag"/>
+		</set>
+	</class>
+</hibernate-mapping>
+
+
+
+
+

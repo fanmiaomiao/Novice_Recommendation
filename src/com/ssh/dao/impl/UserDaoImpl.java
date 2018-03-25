@@ -1,5 +1,6 @@
 package com.ssh.dao.impl;
 
+<<<<<<< HEAD
 
 import java.sql.SQLException;
 
@@ -59,26 +60,12 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
 				Query query=session.createQuery("from User");
 				return query.list();
 			}
+=======
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
-			
-		});
-		return list;
-	}
-	
-///***
-// * 删除
-// **/
-//	public void del(User user) {
-//		getHibernateTemplate().delete(user);
-//	}
-	
-/***
- * 修改
- * */
-//	public List<User> updateUserInfo(){
-//		
-//		
-//	}
-	 
+import com.ssh.dao.UserDao;
+>>>>>>> zcy
+
+public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 }
