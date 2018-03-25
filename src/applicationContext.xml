@@ -11,7 +11,6 @@
  http://www.springframework.org/schema/tx
  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<<<<<<< HEAD
   		<!--  事务管理器 -->
   		<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
   			<property name="sessionFactory" ref="sessionFactory"></property>
@@ -55,10 +54,6 @@
 			<property name="loginService" ref="loginService"></property>
 		</bean>
 			
-		
-				
-    </beans> 
-=======
 	<!-- 引入hibernate配置文件 -->
 	<import resource="hibernate.cfg.xml" />
 
@@ -78,4 +73,3 @@
 	<import resource="classpath:ap.xml" />
 
 </beans> 
->>>>>>> zcy

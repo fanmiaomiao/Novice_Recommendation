@@ -4,19 +4,11 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-<<<<<<< HEAD
-	<!-- 登陆 -->
-	<package name="struts2" extends="struts-default">
-		<action name="loginAction" class="loginServer">
-			<result name="input" >/view/login.jsp</result>
-			<result name="success" >/view/result.jsp</result>
-=======
 	<package name="manager" extends="json-default" namespace="/">
 		<action name="manager_*" class="managerAction" method="{1}">
 			<result name="login" type="json">
 				<param name="root">result</param>
 			</result>
->>>>>>> zcy
 		</action>
 	</package>
 	
