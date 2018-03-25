@@ -25,4 +25,10 @@ public class APDaoImpl extends HibernateDaoSupport implements APDao {
 		return (List<AP>) this.getHibernateTemplate().find("from AP");
 	}
 
+	@Override
+	public void add(AP ap) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().save(ap);
+	}
+
 }

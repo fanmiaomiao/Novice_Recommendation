@@ -30,6 +30,13 @@ public class APService {
 		return apDao.searchAll();
 	}
 
+
+
+	public void add(AP ap) {
+		// TODO Auto-generated method stub
+		apDao.add(ap);
+	}
+
 	
 }
 

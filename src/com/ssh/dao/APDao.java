@@ -10,5 +10,7 @@ public interface APDao {
 
 	List<AP> searchAll();
 
+	void add(AP ap);
+
 
 }

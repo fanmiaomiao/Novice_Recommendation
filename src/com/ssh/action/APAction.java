@@ -72,4 +72,19 @@ public class APAction implements ModelDriven<AP>{
 		return "searchAll";
 	}
 	
+	//添加AP
+	public String add()
+	{
+		apService.add(ap);
+		List<String> jsons = new ArrayList<>();
+		List<AP> lists = apService.searchAll();
+		String str = "";
+		for(AP tmp:lists)
+		{
+			jsons.add(JSONObject.fromObject(tmp).toString());
+		}
+		allAP = JSONArray.fromObject(jsons).toString();
+		return "add";
+	}
+	
 }

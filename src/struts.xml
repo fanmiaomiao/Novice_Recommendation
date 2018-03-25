@@ -41,6 +41,9 @@
 			<result name="searchAll" type="json">
 				<param name="root">allAP</param>
 			</result>
+			<result name="add" type="json">
+				<param name="root">allAP</param>
+			</result>
 		</action>
 	</package>
 </struts>

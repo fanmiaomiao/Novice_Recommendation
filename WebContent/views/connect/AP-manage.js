@@ -197,7 +197,7 @@ function SaveAddAP() {
     };
     console.log(typeof send_data);
     $.ajax({
-        url: "",
+        url: "/Novice_Recommendation/ap_add.action",
         data: send_data,
         type: "POST",
         dataType: "json",
